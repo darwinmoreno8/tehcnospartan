@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"> <!-- Define la codificación de caracteres (UTF-8 soporta ñ, tildes, etc.) -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que la página sea responsive en móviles -->
+  <title>Tehcno Spartan</title> <!-- Título que aparece en la pestaña del navegador -->
+
+  <!-- Font Awesome: librería de íconos (Facebook, Instagram, etc.) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ================= ESTILOS GENERALES ================= */
+    body {
+      margin: 0; /* Elimina los márgenes por defecto */
+      font-family: Arial, sans-serif; /* Fuente de texto */
+      background: #f4f4f4; /* Color de fondo gris claro */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Para que el footer siempre quede al final */
+    }
+
+    /* ================= NAVBAR (BARRA SUPERIOR) ================= */
+    .navbar {
+      position: fixed; /* Siempre visible en la parte superior */
+      top: 0;
+      left: 0;
+      width: 100%; 
+      height: 18vh; /* Ocupa el 18% de la pantalla */
+      display: flex;
+      justify-content: space-between; /* Espacia logo, menú y botón */
+      align-items: center;
+      background-color: black;
+      padding: 10px 20px;
+      z-index: 1000; /* Para que quede encima de todo */
+    }
+
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .navbar .logo img {
+      height: 50px; /* Tamaño del logo */
+    }
+
+    .navbar ul {
+      list-style: none; /* Quita los puntos de lista */
+      display: flex;
+      gap: 20px; /* Espacio entre opciones */
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar ul li a {
+      text-decoration: none; /* Quita el subrayado */
+      color: white;
+      font-weight: bold;
+      transition: color 0.3s; /* Animación suave al pasar el mouse */
+    }
+
+    .navbar ul li a:hover {
+      color: red; /* Efecto hover */
+    }
+
+    .dropbtn {
+      background-color: #444;
+      color: white;
+      padding: 8px 12px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    /* ================= PANEL LATERAL (MENÚ) ================= */
+    .side-panel {
+      height: 100%;
+      width: 0; /* Oculto por defecto */
+      position: fixed;
+      top: 0;
+      right: 0; /* Se abre desde la derecha */
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s; /* Animación suave */
+      padding-top: 60px;
+      z-index: 2000;
+    }
+
+    .side-panel a {
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 18px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+
+    .side-panel a:hover {
+      background: #575757;
+    }
+
+    .side-panel .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* ================= CONTENIDO PRINCIPAL ================= */
+    .contenido {
+      margin-top: 20vh; /* Para que no se esconda debajo de la navbar */
+      padding: 20px;
+      text-align: center;
+      flex: 1; /* Empuja el footer hacia abajo */
+    }
+
+    .main-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    /* ================= CATÁLOGO DE PRODUCTOS ================= */
+    .catalogo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* Siempre 3 columnas */
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .producto {
+      background: white;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .producto img {
+      max-width: 100%;
+      height: 150px;
+      object-fit: cover; /* Ajusta la imagen sin deformarla */
+      border-radius: 8px;
+    }
+
+    .producto h3 {
+      margin: 10px 0 5px;
+    }
+
+    .producto p {
+      font-size: 14px;
+      color: #555;
+      margin: 5px 0;
+    }
+
+    .precio {
+      font-size: 18px;
+      font-weight: bold;
+      color: green;
+      margin: 10px 0;
+    }
+
+    .btn-comprar {
+      background: #e60023;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .btn-comprar:hover {
+      background: #cc001f;
+    }
+
+    /* ================= MODAL DE COMPRA ================= */
+    .modal {
+      display: none; /* Oculto */
+      position: fixed;
+      z-index: 3000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background: rgba(0,0,0,0.7); /* Fondo oscuro transparente */
+    }
+
+    .modal-content {
+      background: white;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 50%;
+      text-align: center;
+      box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .modal-content img {
+      max-width: 200px;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .btn-confirmar {
+      background: green;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+      margin-top: 10px;
+    }
+
+    .btn-confirmar:hover {
+      background: darkgreen;
+    }
+
+    /* ================= FOOTER ================= */
+    footer {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: auto;
+    }
+
+    footer h2 {
+      color: red; /* Resalta el nombre en rojo */
+      margin-bottom: 10px;
+    }
+
+    footer .links {
+      margin: 10px 0;
+    }
+
+    footer .links a {
+      color: white;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    footer .links a:hover {
+      color: red;
+    }
+
+    footer .socials {
+      margin: 15px 0;
+    }
+
+    footer .socials a {
+      color: white;
+      margin: 0 10px;
+      font-size: 22px;
+      transition: color 0.3s;
+    }
+
+    footer .socials a:hover {
+      color: red;
+    }
+
+    footer p {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+    <div class="logo">
+      <img src="../actividad_inero/img/logo.jpg" alt="Logo">
+      Tehcno Spartan
+    </div>
+
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Servicios</a></li>
+      <li><a href="#">Productos</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+
+    <button class="dropbtn" onclick="openPanel()">☰</button>
+  </nav>
+
+  <!-- ================= PANEL LATERAL ================= -->
+  <div id="mySidePanel" class="side-panel">
+    <span class="closebtn" onclick="closePanel()">&times;</span>
+    <a href="#">Perfil</a>
+    <a href="#">Configuración</a>
+    <a href="#">Mis pedidos</a>
+    <a href="#">Cerrar sesión</a>
+  </div>
+
+  <!-- ================= CONTENIDO PRINCIPAL ================= -->
+  <div class="contenido">
+    <h1>Bienvenido a Tehcno Spartan</h1>
+    <div class="main-image">
+      <img src="../actividad_inero/img/spartan_fondo.jpg" alt="Imagen principal">
+    </div>
+    <p>Explora nuestro catálogo de productos</p>
+  </div>
+
+  <!-- ================= CATÁLOGO DE PRODUCTOS ================= -->
+  <div class="catalogo">
+    <script>
+      // Genera 18 productos de prueba con nombre, descripción, precio e imagen
+      const productos = [];
+      for (let i = 1; i <= 18; i++) {
+        productos.push({
+          nombre: `Producto ${i}`,
+          descripcion: `Descripción del producto ${i}`,
+          precio: `$${(i * 10000).toLocaleString()}`,
+          imagen: "https://via.placeholder.com/200"
+        });
+      }
+
+      // Inserta los productos en el HTML
+      document.write(productos.map(p => `
+        <div class="producto">
+          <img src="${p.imagen}" alt="${p.nombre}">
+          <h3>${p.nombre}</h3>
+          <p>${p.descripcion}</p>
+          <div class="precio">${p.precio}</div>
+          <button class="btn-comprar" onclick="abrirModal('${p.nombre}','${p.descripcion}','${p.precio}','${p.imagen}')">Comprar</button>
+        </div>
+      `).join(''));
+    </script>
+  </div>
+
+  <!-- ================= MODAL DE COMPRA ================= -->
+  <div id="modalCompra" class="modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="cerrarModal()">&times;</span>
+      <h2 id="modalTitulo"></h2>
+      <img id="modalImagen" src="" alt="">
+      <p id="modalDescripcion"></p>
+      <div class="precio" id="modalPrecio"></div>
+      <button class="btn-confirmar">Confirmar compra</button>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer>
+    <h2>Tehcno Spartan</h2>
+    <div class="links">
+      <a href="#">Inicio</a> |
+      <a href="#">Servicios</a> |
+      <a href="#">Productos</a> |
+      <a href="#">Contacto</a>
+    </div>
+    <div class="socials">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p>&copy; 2025 Tehcno Spartan - Todos los derechos reservados</p>
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // Abre el panel lateral
+    function openPanel() {
+      document.getElementById("mySidePanel").style.width = "30%";
+    }
+
+    // Cierra el panel lateral
+    function closePanel() {
+      document.getElementById("mySidePanel").style.width = "0";
+    }
+
+    // Abre el modal con los datos del producto
+    function abrirModal(nombre, descripcion, precio, imagen) {
+      document.getElementById("modalTitulo").innerText = nombre;
+      document.getElementById("modalDescripcion").innerText = descripcion;
+      document.getElementById("modalPrecio").innerText = precio;
+      document.getElementById("modalImagen").src = imagen;
+      document.getElementById("modalCompra").style.display = "block";
+    }
+
+    // Cierra el modal
+    function cerrarModal() {
+      document.getElementById("modalCompra").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
