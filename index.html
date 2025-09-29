@@ -1,40 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="UTF-8"> <!-- Define la codificación de caracteres (UTF-8 soporta ñ, tildes, etc.) -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que la página sea responsive en móviles -->
-  <title>Tehcno Spartan</title> <!-- Título que aparece en la pestaña del navegador -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Techno Spartan</title>
 
-  <!-- Font Awesome: librería de íconos (Facebook, Instagram, etc.) -->
+  <!-- Librería de íconos (para las redes sociales del footer) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
-    /* ================= ESTILOS GENERALES ================= */
+    /* ====== Estilos generales ====== */
     body {
-      margin: 0; /* Elimina los márgenes por defecto */
-      font-family: Arial, sans-serif; /* Fuente de texto */
-      background: #f4f4f4; /* Color de fondo gris claro */
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
       display: flex;
       flex-direction: column;
-      min-height: 100vh; /* Para que el footer siempre quede al final */
+      min-height: 100vh;
     }
 
-    /* ================= NAVBAR (BARRA SUPERIOR) ================= */
-    .navbar {
-      position: fixed; /* Siempre visible en la parte superior */
+    /* ====== Barra superior (navbar) ====== */
+    .barra-superior {
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%; 
-      height: 18vh; /* Ocupa el 18% de la pantalla */
+      height: 15vh;
       display: flex;
-      justify-content: space-between; /* Espacia logo, menú y botón */
+      justify-content: space-between;
       align-items: center;
       background-color: black;
       padding: 10px 20px;
-      z-index: 1000; /* Para que quede encima de todo */
+      z-index: 1000;
     }
 
-    .navbar .logo {
+    .barra-superior .marca {
       display: flex;
       align-items: center;
       gap: 10px;
@@ -43,30 +43,29 @@
       font-weight: bold;
     }
 
-    .navbar .logo img {
-      height: 50px; /* Tamaño del logo */
+    .barra-superior .marca img {
+      height: 50px;
     }
 
-    .navbar ul {
-      list-style: none; /* Quita los puntos de lista */
+    .barra-superior ul {
+      list-style: none;
       display: flex;
-      gap: 20px; /* Espacio entre opciones */
+      gap: 20px;
       margin: 0;
       padding: 0;
     }
 
-    .navbar ul li a {
-      text-decoration: none; /* Quita el subrayado */
+    .barra-superior ul li a {
+      text-decoration: none;
       color: white;
       font-weight: bold;
-      transition: color 0.3s; /* Animación suave al pasar el mouse */
     }
 
-    .navbar ul li a:hover {
-      color: red; /* Efecto hover */
+    .barra-superior ul li a:hover {
+      color: red;
     }
 
-    .dropbtn {
+    .btn-menu {
       background-color: #444;
       color: white;
       padding: 8px 12px;
@@ -76,34 +75,32 @@
       border-radius: 5px;
     }
 
-    /* ================= PANEL LATERAL (MENÚ) ================= */
-    .side-panel {
+    /* ====== Menú lateral ====== */
+    .menu-lateral {
       height: 100%;
-      width: 0; /* Oculto por defecto */
+      width: 0;
       position: fixed;
       top: 0;
-      right: 0; /* Se abre desde la derecha */
+      right: 0;
       background-color: #111;
-      overflow-x: hidden;
-      transition: 0.5s; /* Animación suave */
+      transition: 0.5s;
       padding-top: 60px;
       z-index: 2000;
     }
 
-    .side-panel a {
+    .menu-lateral a {
       padding: 10px 20px;
       text-decoration: none;
       font-size: 18px;
       color: white;
       display: block;
-      transition: 0.3s;
     }
 
-    .side-panel a:hover {
+    .menu-lateral a:hover {
       background: #575757;
     }
 
-    .side-panel .closebtn {
+    .menu-lateral .cerrar {
       position: absolute;
       top: 10px;
       right: 20px;
@@ -112,24 +109,23 @@
       cursor: pointer;
     }
 
-    /* ================= CONTENIDO PRINCIPAL ================= */
+    /* ====== Contenido principal ====== */
     .contenido {
-      margin-top: 20vh; /* Para que no se esconda debajo de la navbar */
+      margin-top: 20vh;
       padding: 20px;
       text-align: center;
-      flex: 1; /* Empuja el footer hacia abajo */
+      flex: 1;
     }
 
-    .main-image img {
+    .contenido img {
       max-width: 100%;
-      height: auto;
       border-radius: 10px;
     }
 
-    /* ================= CATÁLOGO DE PRODUCTOS ================= */
+    /* ====== Catálogo de productos ====== */
     .catalogo {
       display: grid;
-      grid-template-columns: repeat(3, 1fr); /* Siempre 3 columnas */
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       padding: 20px;
     }
@@ -140,26 +136,13 @@
       border-radius: 10px;
       padding: 15px;
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
     }
 
     .producto img {
       max-width: 100%;
       height: 150px;
-      object-fit: cover; /* Ajusta la imagen sin deformarla */
+      object-fit: cover;
       border-radius: 8px;
-    }
-
-    .producto h3 {
-      margin: 10px 0 5px;
-    }
-
-    .producto p {
-      font-size: 14px;
-      color: #555;
-      margin: 5px 0;
     }
 
     .precio {
@@ -177,49 +160,44 @@
       border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
-      transition: background 0.3s;
     }
 
     .btn-comprar:hover {
       background: #cc001f;
     }
 
-    /* ================= MODAL DE COMPRA ================= */
+    /* ====== Modal (detalle producto) ====== */
     .modal {
-      display: none; /* Oculto */
+      display: none;
       position: fixed;
       z-index: 3000;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      overflow: auto;
-      background: rgba(0,0,0,0.7); /* Fondo oscuro transparente */
+      background: rgba(0,0,0,0.7);
     }
 
-    .modal-content {
+    .modal-contenido {
       background: white;
       margin: 10% auto;
       padding: 20px;
       border-radius: 10px;
       width: 50%;
       text-align: center;
-      box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
       position: relative;
     }
 
-    .close-modal {
+    .cerrar-modal {
       position: absolute;
       top: 10px;
       right: 20px;
       font-size: 30px;
       cursor: pointer;
-      color: #333;
     }
 
-    .modal-content img {
+    .modal-contenido img {
       max-width: 200px;
-      border-radius: 10px;
       margin-bottom: 15px;
     }
 
@@ -231,15 +209,9 @@
       border-radius: 8px;
       cursor: pointer;
       font-weight: bold;
-      transition: background 0.3s;
-      margin-top: 10px;
     }
 
-    .btn-confirmar:hover {
-      background: darkgreen;
-    }
-
-    /* ================= FOOTER ================= */
+    /* ====== Footer ====== */
     footer {
       background: black;
       color: white;
@@ -249,168 +221,181 @@
     }
 
     footer h2 {
-      color: red; /* Resalta el nombre en rojo */
-      margin-bottom: 10px;
-    }
-
-    footer .links {
-      margin: 10px 0;
+      color: red;
     }
 
     footer .links a {
       color: white;
-      text-decoration: none;
       margin: 0 10px;
-      font-weight: bold;
-      transition: color 0.3s;
+      text-decoration: none;
     }
 
     footer .links a:hover {
       color: red;
     }
 
-    footer .socials {
-      margin: 15px 0;
-    }
-
-    footer .socials a {
+    footer .social a {
       color: white;
       margin: 0 10px;
       font-size: 22px;
-      transition: color 0.3s;
     }
 
-    footer .socials a:hover {
+    footer .social a:hover {
       color: red;
-    }
-
-    footer p {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #aaa;
     }
   </style>
 </head>
 <body>
 
-  <!-- ================= NAVBAR ================= -->
-  <nav class="navbar">
-    <div class="logo">
+  <!-- Barra superior -->
+  <nav class="barra-superior">
+    <div class="marca">
       <img src="../actividad_inero/img/logo.jpg" alt="Logo">
-      Tehcno Spartan
+      Techno Spartan
     </div>
 
     <ul>
-      <li><a href="#">Inicio</a></li>
-      <li><a href="#">Servicios</a></li>
-      <li><a href="#">Productos</a></li>
-      <li><a href="#">Contacto</a></li>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="resumen_intro.html">Resumen y Introduccion</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contactanos.html">contactenos</a></li>
     </ul>
 
-    <button class="dropbtn" onclick="openPanel()">☰</button>
+    <button class="btn-menu" onclick="abrirMenu()">☰</button>
   </nav>
 
-  <!-- ================= PANEL LATERAL ================= -->
-  <div id="mySidePanel" class="side-panel">
-    <span class="closebtn" onclick="closePanel()">&times;</span>
+  <!-- Menú lateral -->
+  <div id="menuLateral" class="menu-lateral">
+    <span class="cerrar" onclick="cerrarMenu()">&times;</span>
     <a href="#">Perfil</a>
     <a href="#">Configuración</a>
     <a href="#">Mis pedidos</a>
     <a href="#">Cerrar sesión</a>
   </div>
 
-  <!-- ================= CONTENIDO PRINCIPAL ================= -->
+  <!-- Contenido principal -->
   <div class="contenido">
-    <h1>Bienvenido a Tehcno Spartan</h1>
-    <div class="main-image">
-      <img src="../actividad_inero/img/spartan_fondo.jpg" alt="Imagen principal">
-    </div>
-    <p>Explora nuestro catálogo de productos</p>
+    <h1>Bienvenido a Techno Spartan</h1>
+    <img src="../actividad_inero/img/spartan_fondo.jpg" alt="Imagen principal">
+    <p>Catálogo de consolas y accesorios gamer</p>
   </div>
 
-  <!-- ================= CATÁLOGO DE PRODUCTOS ================= -->
+  <!-- Catálogo (18 productos personalizados) -->
   <div class="catalogo">
     <script>
-      // Genera 18 productos de prueba con nombre, descripción, precio e imagen
-      const productos = [];
-      for (let i = 1; i <= 18; i++) {
-        productos.push({
-          nombre: `Producto ${i}`,
-          descripcion: `Descripción del producto ${i}`,
-          precio: `$${(i * 10000).toLocaleString()}`,
-          imagen: "https://via.placeholder.com/200"
-        });
-      }
+      const inventario = [
+        { nombre: "PlayStation 5", desc: "Consola de Sony con 825GB SSD", precio: "$3.000.000", img: "../actividad_inero/img/Consola de Sony con 825GB SSD.jpg" },
+        { nombre: "Xbox Series X", desc: "Consola de Microsoft 1TB SSD", precio: "$2.900.000", img: "../actividad_inero/img/2.png" },
+        { nombre: "Nintendo Switch OLED", desc: "Versión OLED 64GB", precio: "$1.800.000", img: "../actividad_inero/img/3.png" },
+        { nombre: "Control PS5", desc: "DualSense original color blanco", precio: "$350.000", img: "../actividad_inero/img/4.jfif" },
+        { nombre: "Control Xbox", desc: "Edición negra con vibración HD", precio: "$320.000", img: "../actividad_inero/img/5.jfif" },
+        { nombre: "Headset Gamer", desc: "Audífonos con micrófono RGB", precio: "$280.000", img: "../actividad_inero/img/6.jpg" },
+        { nombre: "Teclado Mecánico", desc: "Switch azul retroiluminado", precio: "$400.000", img: "../actividad_inero/img/7.jpg" },
+        { nombre: "Mose Gameru", desc: "RGB 12.000 DPI", precio: "$150.000", img: "../actividad_inero/img/8.jfif" },
+        { nombre: "Monitor 144Hz", desc: "27 pulgadas FullHD", precio: "$900.000", img: "../actividad_inero/img/9.jfif" },
+        { nombre: "Spider-Man 2", desc: "Juego exclusivo de PS5", precio: "$280.000", img: "../actividad_inero/img/10.jfif" },
+        { nombre: "Halo Infinite", desc: "Shooter de Microsoft", precio: "$260.000", img: "../actividad_inero/img/11.avif" },
+        { nombre: "Zelda BOTW", desc: "Juego para Switch", precio: "$250.000", img: "../actividad_inero/img/12.jfif" },
+        { nombre: "Mando Pro Switch", desc: "Control Pro de Nintendo", precio: "$280.000", img: "../actividad_inero/img/13.jpg" },
+        { nombre: "Cámara PS5", desc: "Accesorio oficial", precio: "$300.000", img: "../actividad_inero/img/14.jpg" },
+        { nombre: "Game Pass", desc: "Suscripción 12 meses", precio: "$420.000", img: "../actividad_inero/img/15.jpg" },
+        { nombre: "Gift Card PSN", desc: "50 dólares de saldo", precio: "$200.000", img: "../actividad_inero/img/16.jpg" },
+        { nombre: "FIFA 25", desc: "Juego multiplataforma", precio: "$280.000", img: "../actividad_inero/img/17.jfif" },
+        { nombre: "Cyberpunk 2077", desc: "Edición mejorada", precio: "$270.000", img: "../actividad_inero/img/18.jpg" }
+      ];
 
-      // Inserta los productos en el HTML
-      document.write(productos.map(p => `
+      document.write(inventario.map(p => `
         <div class="producto">
-          <img src="${p.imagen}" alt="${p.nombre}">
+          <img src="${p.img}" alt="${p.nombre}">
           <h3>${p.nombre}</h3>
-          <p>${p.descripcion}</p>
+          <p>${p.desc}</p>
           <div class="precio">${p.precio}</div>
-          <button class="btn-comprar" onclick="abrirModal('${p.nombre}','${p.descripcion}','${p.precio}','${p.imagen}')">Comprar</button>
+          <button class="btn-comprar" 
+            data-nombre="${p.nombre}" 
+            data-desc="${p.desc}" 
+            data-precio="${p.precio}" 
+            data-img="${p.img}">
+            Comprar
+          </button>
         </div>
       `).join(''));
     </script>
   </div>
 
-  <!-- ================= MODAL DE COMPRA ================= -->
-  <div id="modalCompra" class="modal">
-    <div class="modal-content">
-      <span class="close-modal" onclick="cerrarModal()">&times;</span>
-      <h2 id="modalTitulo"></h2>
-      <img id="modalImagen" src="" alt="">
-      <p id="modalDescripcion"></p>
-      <div class="precio" id="modalPrecio"></div>
+  <!-- Modal (detalle del producto) -->
+  <div id="modalProducto" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+      <h2 id="tituloModal"></h2>
+      <img id="imagenModal" src="" alt="">
+      <p id="descripcionModal"></p>
+      <div class="precio" id="precioModal"></div>
       <button class="btn-confirmar">Confirmar compra</button>
     </div>
   </div>
 
-  <!-- ================= FOOTER ================= -->
+  <!-- Footer -->
   <footer>
-    <h2>Tehcno Spartan</h2>
+    <h2>Techno Spartan</h2>
     <div class="links">
       <a href="#">Inicio</a> |
-      <a href="#">Servicios</a> |
-      <a href="#">Productos</a> |
-      <a href="#">Contacto</a>
+      <a href="#">Consolas</a> |
+      <a href="#">Accesorios</a> |
+      <a href="#">Juegos</a>
     </div>
-    <div class="socials">
+    <div class="social">
       <a href="#"><i class="fab fa-facebook-f"></i></a>
       <a href="#"><i class="fab fa-instagram"></i></a>
       <a href="#"><i class="fab fa-twitter"></i></a>
       <a href="#"><i class="fab fa-youtube"></i></a>
     </div>
-    <p>&copy; 2025 Tehcno Spartan - Todos los derechos reservados</p>
+    <p>&copy; 2025 Techno Spartan - Proyecto personal hecho con ganas de aprender 🚀</p>
   </footer>
 
-  <!-- ================= JAVASCRIPT ================= -->
   <script>
-    // Abre el panel lateral
-    function openPanel() {
-      document.getElementById("mySidePanel").style.width = "30%";
+    function abrirMenu() {
+      document.getElementById("menuLateral").style.width = "30%";
+    }
+    function cerrarMenu() {
+      document.getElementById("menuLateral").style.width = "0";
     }
 
-    // Cierra el panel lateral
-    function closePanel() {
-      document.getElementById("mySidePanel").style.width = "0";
+    function mostrarDetalle(nombre, desc, precio, img) {
+      document.getElementById("tituloModal").innerText = nombre;
+      document.getElementById("descripcionModal").innerText = desc;
+      document.getElementById("precioModal").innerText = precio;
+      document.getElementById("imagenModal").src = img;
+      document.getElementById("modalProducto").style.display = "block";
+
+      // Guardamos el producto actual en un atributo del modal
+      document.getElementById("modalProducto").dataset.producto = nombre;
     }
 
-    // Abre el modal con los datos del producto
-    function abrirModal(nombre, descripcion, precio, imagen) {
-      document.getElementById("modalTitulo").innerText = nombre;
-      document.getElementById("modalDescripcion").innerText = descripcion;
-      document.getElementById("modalPrecio").innerText = precio;
-      document.getElementById("modalImagen").src = imagen;
-      document.getElementById("modalCompra").style.display = "block";
-    }
-
-    // Cierra el modal
     function cerrarModal() {
-      document.getElementById("modalCompra").style.display = "none";
+      document.getElementById("modalProducto").style.display = "none";
     }
+
+    // Delegación de eventos: escucha clicks en botones comprar
+    document.addEventListener("click", function(e) {
+      if(e.target.classList.contains("btn-comprar")) {
+        const btn = e.target;
+        mostrarDetalle(
+          btn.dataset.nombre,
+          btn.dataset.desc,
+          btn.dataset.precio,
+          btn.dataset.img
+        );
+      }
+
+      if(e.target.classList.contains("btn-confirmar")) {
+        const modal = document.getElementById("modalProducto");
+        const producto = modal.dataset.producto;
+        alert(`✅ Has comprado: ${producto}`);
+        cerrarModal();
+      }
+    });
   </script>
 
 </body>
 </html>
+
