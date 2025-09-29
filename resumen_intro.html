@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Techno Spartan - Contenido</title>
+
+  <!-- Librería de íconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ===== Barra superior ===== */
+    .barra-superior {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 97%; 
+      height: 15vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: black;
+      padding: 10px 20px;
+      z-index: 1000;
+    }
+
+    .barra-superior .marca {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .barra-superior .marca img {
+      height: 50px;
+    }
+
+    .barra-superior ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .barra-superior ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    .barra-superior ul li a:hover {
+      color: red;
+    }
+
+    /* ===== Contenido principal ===== */
+    .contenido {
+      margin-top: 20vh;
+      padding: 40px 20px;
+      flex: 1;
+      text-align: center;
+    }
+
+    .contenido h1 {
+      color: red;
+      margin-bottom: 20px;
+    }
+
+    .seccion {
+      background: white;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 800px;
+      text-align: left;
+    }
+
+    .seccion h2 {
+      color: black;
+      border-left: 5px solid red;
+      padding-left: 10px;
+    }
+
+    .seccion p {
+      line-height: 1.6;
+      color: #333;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: auto;
+    }
+
+    footer h2 {
+      color: red;
+    }
+
+    footer .links a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer .links a:hover {
+      color: red;
+    }
+
+    footer .social a {
+      color: white;
+      margin: 0 10px;
+      font-size: 22px;
+    }
+
+    footer .social a:hover {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra superior -->
+  <nav class="barra-superior">
+    <div class="marca">
+      <img src="../actividad_inero/img/logo.jpg" alt="Logo">
+      Techno Spartan
+    </div>
+    <ul>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="resumen_intro.html">Resumen y Introduccion</a></li>
+      <li><a href="nosotros.html">Nosotros</a></li>
+      <li><a href="contactanos.html">Contactenos</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contenido -->
+  <div class="contenido">
+    <h1>Archivo de Contenido</h1>
+
+    <div class="seccion">
+      <h2>Introducción</h2>
+      <p>
+        Bienvenido a Techno Spartan, tu tienda digital de confianza para productos tecnológicos de alta calidad. Fundada en 2018 por Darwin Moreno, nuestra misión es ofrecer a nuestros clientes una experiencia de compra cómoda, segura y confiable, adaptándonos a las necesidades del mercado y brindando tecnología original y eficiente, disponible 24/7.
+
+En Techno Spartan, no solo vendemos productos: creamos experiencias únicas para nuestros clientes, garantizando que cada pedido llegue rápido, seguro y directamente a tu hogar, con la confianza de que estás adquiriendo lo mejor del mercado tecnológico.
+      </p>
+    </div>
+
+    <div class="seccion">
+      <h2>Resumen</h2>
+      <p>
+         Techno Spartan es una tienda online de tecnología que facilita la adquisición de productos tecnológicos a sus usuarios, llevándolos directamente a la puerta de su hogar. Nuestro servicio está disponible 24/7, garantizando rapidez y eficiencia en cada pedido. Además, ofrecemos un sitio seguro y confiable, para que nuestros clientes puedan comprar con tranquilidad y confianza.
+
+Nos enorgullece combinar tecnología de punta, atención personalizada y productos originales, asegurando que cada experiencia de compra sea cómoda, segura y satisfactoria para todos nuestros clientes.
+      </p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <h2>Techno Spartan</h2>
+    <div class="links">
+      <a href="index.html">Inicio</a> |
+      <a href="resumen_intro.html">Consolas</a> |
+      <a href="#">Accesorios</a> |
+      <a href="#">Juegos</a>
+    </div>
+    <div class="social">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+    <p>&copy; 2025 Techno Spartan - Proyecto personal hecho con ganas de aprender 🚀</p>
+  </footer>
+
+</body>
+</html>
